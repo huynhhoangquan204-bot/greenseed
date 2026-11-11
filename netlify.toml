@@ -1,7 +1,6 @@
 [build]
-  command = "pnpm turbo run build --filter=@greenseed/web"
+  command = "npx -y pnpm@10.30.3 install --frozen-lockfile && npx -y pnpm@10.30.3 run build"
   publish = "dist"
-  ignore  = "npx turbo-ignore @greenseed/web"
 
 [build.environment]
   NODE_VERSION = "22"
