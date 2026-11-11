@@ -52,7 +52,7 @@ function Home({user}){
    {user&&<MyOrders uid={user.uid}/>}
    {news.length>1&&<section className="mt-10"><h2 className="font-serif text-2xl text-white mb-3">Thông báo</h2><ul className="space-y-1 text-sm text-slate-300">{news.map(n=><li key={n.id}>• {n.text}</li>)}</ul></section>}
   </main>
-  <footer className="p-6 text-center text-xs text-slate-600"><a href="/admin">Admin</a></footer>
+  <footer className="p-6 text-center text-xs text-slate-600"><a href={import.meta.env.BASE_URL+'admin'}>Admin</a></footer>
   <ChatWidget user={user} onNeedLogin={()=>setModal({t:'auth'})}/>
   {modal&&<Modal onClose={()=>setModal(null)}>{modal.t==='auth'?<AuthBox onDone={()=>setModal(null)}/>:<OrderForm plant={modal.p} user={user} onClose={()=>setModal(null)}/>}</Modal>}
  </div>}
@@ -60,4 +60,4 @@ function Home({user}){
 export default function App(){
  const user=useAuth()
  if(user===undefined)return <div className="flex min-h-screen items-center justify-center bg-slate-950 text-slate-500">Đang tải...</div>
- return location.pathname.startsWith('/admin')?<Admin user={user}/>:<Home user={user}/>}
+ return location.pathname.replace(/\/$/,'').endsWith('/admin')?<Admin user={user}/>:<Home user={user}/>}
