@@ -1,7 +1,0 @@
-{
-  "packages": {
-    "apps/web":   { "release-type": "node" },
-    "apps/admin": { "release-type": "node" },
-    "apps/api":   { "release-type": "node" }
-  }
-}
